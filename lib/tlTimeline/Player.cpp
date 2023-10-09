@@ -338,6 +338,13 @@ namespace tl
             {
                 p.thread.thread.join();
             }
+            if (auto context = getContext().lock())
+            {
+                auto logSystem = context->getLogSystem();
+                logSystem->print(
+                    string::Format("tl::timeline::Player {0}").arg(this),
+                    "~Player()");
+            }
         }
 
         std::shared_ptr<Player> Player::create(

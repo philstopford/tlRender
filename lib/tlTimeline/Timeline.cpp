@@ -202,6 +202,13 @@ namespace tl
             {
                 p.thread.thread.join();
             }
+            if (auto context = p.context.lock())
+            {
+                auto logSystem = context->getLogSystem();
+                logSystem->print(
+                    string::Format("tl::timeline::Timeline {0}").arg(this),
+                    "~Timeline()");
+            }
         }
 
         const std::weak_ptr<system::Context>& Timeline::getContext() const
