@@ -53,7 +53,7 @@ namespace tl
             ISystem::_init("tl::io::System", context);
             TLRENDER_P();
 
-            //p.cache = Cache::create();
+            p.cache = Cache::create();
 
             if (auto context = _context.lock())
             {
