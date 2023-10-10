@@ -8,6 +8,8 @@
 #include <tlCore/String.h>
 
 #include <array>
+#include <atomic>
+#include <cstring>
 
 namespace tl
 {
@@ -87,12 +89,23 @@ namespace tl
             const size_t byteCount = getByteCount();
             _data.resize(byteCount);
         }
+        
+        namespace
+        {
+            std::atomic<int> audioCount(0);
+        }
 
         Audio::Audio()
-        {}
+        {
+            audioCount = audioCount + 1;
+            std::cout << "audioCount: " << audioCount << std::endl;
+        }
 
         Audio::~Audio()
-        {}
+        {
+            audioCount = audioCount - 1;
+            std::cout << "audioCount: " << audioCount << std::endl;
+        }
 
         std::shared_ptr<Audio> Audio::create(
             const Info& info,

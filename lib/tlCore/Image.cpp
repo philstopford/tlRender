@@ -289,14 +289,14 @@ namespace tl
 
         Image::Image()
         {
-            imageCount = imageCount + 1;
-            std::cout << "imageCount: " << imageCount << std::endl;
+            //imageCount = imageCount + 1;
+            //std::cout << "imageCount: " << imageCount << std::endl;
         }
 
         Image::~Image()
         {
-            imageCount = imageCount - 1;
-            std::cout << "imageCount: " << imageCount << std::endl;
+            //imageCount = imageCount - 1;
+            //std::cout << "imageCount: " << imageCount << std::endl;
         }
 
         std::shared_ptr<Image> Image::create(const Info& info)
