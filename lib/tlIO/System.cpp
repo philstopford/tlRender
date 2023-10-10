@@ -32,7 +32,9 @@
 
 #include <tlCore/Context.h>
 #include <tlCore/File.h>
+#include <tlCore/Memory.h>
 #include <tlCore/String.h>
+#include <tlCore/StringFormat.h>
 
 #include <iomanip>
 #include <sstream>
@@ -222,6 +224,19 @@ namespace tl
         const std::shared_ptr<Cache>& System::getCache() const
         {
             return _p->cache;
+        }
+
+        void System::tick()
+        {
+            TLRENDER_P();
+            _log(string::Format("Cache: {0}/{1}GB").
+                arg(p.cache->getSize() / static_cast<float>(memory::gigabyte)).
+                arg(p.cache->getMax() / static_cast<float>(memory::gigabyte)));
+        }
+
+        std::chrono::milliseconds System::getTickTime() const
+        {
+            return std::chrono::seconds(10);
         }
     }
 }

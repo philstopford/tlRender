@@ -76,6 +76,9 @@ namespace tl
             //! Get the I/O cache.
             const std::shared_ptr<Cache>& getCache() const;
 
+            void tick() override;
+            std::chrono::milliseconds getTickTime() const override;
+
         private:
             std::vector<std::shared_ptr<IPlugin> > _plugins;
 
