@@ -53,7 +53,7 @@ namespace tl
             ISystem::_init("tl::io::System", context);
             TLRENDER_P();
 
-            p.cache = Cache::create();
+            //p.cache = Cache::create();
 
             if (auto context = _context.lock())
             {
@@ -229,9 +229,12 @@ namespace tl
         void System::tick()
         {
             TLRENDER_P();
-            _log(string::Format("Cache: {0}/{1}GB").
-                arg(p.cache->getSize() / static_cast<float>(memory::gigabyte)).
-                arg(p.cache->getMax() / static_cast<float>(memory::gigabyte)));
+            if (p.cache)
+            {
+                _log(string::Format("Cache: {0}/{1}GB").
+                    arg(p.cache->getSize() / static_cast<float>(memory::gigabyte)).
+                    arg(p.cache->getMax() / static_cast<float>(memory::gigabyte)));
+            }
         }
 
         std::chrono::milliseconds System::getTickTime() const
