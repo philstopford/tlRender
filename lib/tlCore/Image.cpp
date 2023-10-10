@@ -10,7 +10,6 @@
 
 #include <algorithm>
 #include <array>
-#include <atomic>
 #include <cstring>
 #include <iostream>
 
@@ -282,22 +281,11 @@ namespace tl
             _data.resize(_dataByteCount + 16);
         }
         
-        namespace
-        {
-            std::atomic<int> imageCount(0);
-        }
-
         Image::Image()
-        {
-            //imageCount = imageCount + 1;
-            //std::cout << "imageCount: " << imageCount << std::endl;
-        }
+        {}
 
         Image::~Image()
-        {
-            //imageCount = imageCount - 1;
-            //std::cout << "imageCount: " << imageCount << std::endl;
-        }
+        {}
 
         std::shared_ptr<Image> Image::create(const Info& info)
         {
